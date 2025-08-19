@@ -73,12 +73,9 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     card: {
-        width: 400,
-        margin: 8,
+        width: 800,
+        margin: 30,
         alignItems: 'center',
-        gap: 20,
-        justifyContent: 'space-evenly',
-        borderColor: 'red', borderWidth: 100,
     },
     poster: {
         width: 200,
