@@ -3,7 +3,7 @@
     "name": "Backscreen-OTT-Demo",
     "slug": "Backscreen-OTT-Demo",
     "version": "1.0.0",
-    "orientation": "portrait",
+    "orientation": "landscape",
     "icon": "./assets/images/icon.png",
     "scheme": "backscreenottdemo",
     "userInterfaceStyle": "automatic",
