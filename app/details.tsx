@@ -1,9 +1,9 @@
 import { StyleSheet, Text, View } from 'react-native';
 
-export default function HomeScreen() {
+export default function DetailsScreen() {
     return (
         <View style={styles.container}>
-            <Text>This will be a Home screen.</Text>
+            <Text>This will be a details screen or modal</Text>
         </View>
     );
 }
