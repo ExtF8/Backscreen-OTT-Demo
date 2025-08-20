@@ -48,17 +48,20 @@ export default function HomeScreen() {
                 keyExtractor={item => item.id}
                 contentContainerStyle={styles.listContent}
                 renderItem={({ item }) => (
-                    <Link href={{ pathname: '/details', params: { id: item.id } }} asChild>
+                    <Link
+                        style={styles.card}
+                        href={{ pathname: '/details', params: { id: item.id } }}
+                        asChild
+                    >
                         <Pressable
-                            focusable
-                            accessibilityRole='button'
                             onFocus={() => setFocusedId(item.id)}
                             onBlur={() => setFocusedId(null)}
                             style={({ pressed }) => [
-                                styles.card,
                                 pressed && styles.pressed,
                                 focusedId === item.id && styles.focused,
                             ]}
+                            focusable
+                            accessibilityRole='button'
                         >
                             <Image source={{ uri: item.thumbnail }} style={styles.poster} />
                             <Text style={styles.title} numberOfLines={1}>
@@ -80,23 +83,27 @@ const styles = StyleSheet.create({
         backgroundColor: '#000000',
     },
     listContent: {
-        paddingHorizontal: 12,
+        width: '100%',
+        height: 300,
+        paddingTop: 20,
+        justifyContent: 'space-evenly',
         alignItems: 'center',
     },
     card: {
-        width: 800,
-        margin: 30,
+        width: '30%',
+        height: 'auto',
+        marginHorizontal: 16,
         alignItems: 'center',
     },
     poster: {
-        width: 200,
-        height: 280,
+        width: '100%',
+        height: '80%',
         borderRadius: 6,
-        // borderColor: 'red', borderWidth: 1,
     },
     title: {
-        width: 200,
+        marginTop: 6,
         marginBottom: 8,
+        fontSize: 22,
         textAlign: 'center',
         color: '#eaedee',
     },
