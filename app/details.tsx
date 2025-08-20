@@ -1,4 +1,4 @@
-import { StyleSheet, View, Text, Image, Pressable } from 'react-native';
+import { StyleSheet, View, Text, Pressable, ImageBackground } from 'react-native';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { Movie } from '../types/Movies';
 import { getMovies } from '../utils/catalog';
@@ -22,17 +22,26 @@ export default function DetailsScreen() {
     // Render poster, title, description, play button
     return (
         <View style={styles.container}>
-            <Image source={{ uri: movie.thumbnail }} style={styles.poster} />
-            <Text style={styles.title}>{movie.title}</Text>
-            <Text style={styles.description}>{movie.description}</Text>
-            <Pressable
-                focusable
-                accessibilityRole='button'
-                onPress={() => router.push({ pathname: '/player', params: { id: movie.id } })}
-                style={({ pressed }) => [styles.playButton, pressed && styles.playPressed]}
+            <ImageBackground
+                source={{ uri: movie.thumbnail }}
+                resizeMode='cover'
+                style={styles.backgroundImage}
             >
-                <Text style={styles.playText}>Play</Text>
-            </Pressable>
+                <View style={styles.titleContainer}>
+                    <Text style={styles.title}>{movie.title}</Text>
+                    <Text style={styles.description}>{movie.description}</Text>
+                    <Pressable
+                        focusable
+                        accessibilityRole='button'
+                        onPress={() =>
+                            router.push({ pathname: '/player', params: { id: movie.id } })
+                        }
+                        style={({ pressed }) => [styles.playButton, pressed && styles.playPressed]}
+                    >
+                        <Text style={styles.playText}>Play</Text>
+                    </Pressable>
+                </View>
+            </ImageBackground>
         </View>
     );
 }
@@ -40,27 +49,29 @@ export default function DetailsScreen() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
         backgroundColor: '#000000',
     },
-    poster: {
-        width: 320,
-        height: 480,
-        marginBottom: 20,
-        borderRadius: 6,
+    backgroundImage: {
+        flex: 1,
+        justifyContent: 'flex-end',
+    },
+    titleContainer: {
+        alignItems: 'center',
+        paddingBottom: 10,
+        backgroundColor: '#00000099'
     },
     title: {
-        fontSize: 26,
-        color: '#b6b6b6',
+        fontSize: 30,
+        fontWeight: 'bold',
+        color: '#eaedee',
         marginBottom: 8,
         textAlign: 'center',
     },
     description: {
-        maxWidth: 680,
+        fontSize: 26,
         marginBottom: 16,
         textAlign: 'center',
-        color: '#b6b6b6',
+        color: '#eaedee',
     },
     playButton: {
         paddingHorizontal: 24,
@@ -70,10 +81,9 @@ const styles = StyleSheet.create({
     },
     playPressed: {
         opacity: 0.5,
-
     },
     playText: {
-        color: '#b6b6b6',
+        color: '#eaedee',
         fontSize: 18,
     },
     center: {
@@ -85,6 +95,6 @@ const styles = StyleSheet.create({
     error: {
         marginTop: 24,
         textAlign: 'center',
-        color: '#b6b6b6',
+        color: '#eaedee',
     },
 });
