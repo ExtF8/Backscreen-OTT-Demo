@@ -80,12 +80,11 @@ export default function PlayerScreen() {
                 contentFit='contain'
                 nativeControls
                 allowsFullscreen
-                crossOrigin='anonymous'
             />
 
             {isLoading && (
                 <View style={styles.overlayCenter}>
-                    <ActivityIndicator size={'large'} />
+                    <ActivityIndicator size={'large'} color={'#4f1fff'} style={{ flex: 1 }}/>
                 </View>
             )}
 
@@ -109,7 +108,7 @@ export default function PlayerScreen() {
                         onPress={() => router.replace('/')}
                         style={({ pressed }) => [
                             styles.primaryButton,
-                            pressed && { opacity: 0.85 },
+                            pressed && { opacity: 0.6 },
                         ]}
                         focusable
                         accessibilityRole='button'
