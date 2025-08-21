@@ -4,9 +4,13 @@ A simple OTT-style video browsing and playback application built with **Expo Rou
 
 ## Setup & Run on Android TV Emulator
 
-1. Install Expo accordign to official documentation
+1. Install Expo accordin to official documentation
 
 2. Clone repo
+    
+    ```bash
+    git clone
+    ```
 
 3. Install dependencies
 
