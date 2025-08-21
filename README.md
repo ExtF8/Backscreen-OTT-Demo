@@ -1,22 +1,26 @@
 # Backscreen OTT Demo
 
-A simple OTT-style video browsing and playback application built with **Expo Router**, designed to run on **Android TV emulator**. Users can browse a catalog of movies, view details, and play videos using an intuitive interface.
+A simple OTT-style video browsing and playback application built with **Expo Router**, designed to run on **Android TV emulator**. Users can browse a catalog of movies, view details, and play videos.
 
 ## Setup & Run on Android TV Emulator
 
-1. Install dependencies
+1. Install Expo accordign to official documentation
+
+2. Clone repo
+
+3. Install dependencies
 
     ```bash
     npm install
     ```
 
-2. Start the app
+4. Start the app
 
     ```bash
     npx expo start
     ```
 
-3. Create and start an Android TV Emulator
+5. Create and start an Android TV Emulator
 
     1. Open Android Studio → Device Manager
 
@@ -46,15 +50,15 @@ Jest configuration for Expo apps, allowing smooth test setup.
 
 Run all tests
 
-```bash
-npm test
-```
+   ```bash
+    npm test
+   ```
 
 Run a single test file
 
-```bash
-npm test __tests__/HomeScreen.test.tsx
-```
+   ```bash
+    npm test __tests__/HomeScreen.test.tsx
+   ```
 
 ## Known Limitations and TODOs
 
