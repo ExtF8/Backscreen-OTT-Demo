@@ -1,22 +1,14 @@
 import { useEffect, useState } from 'react';
-import {
-    Image,
-    FlatList,
-    Pressable,
-    StyleSheet,
-    Text,
-    View,
-    ActivityIndicator,
-} from 'react-native';
-
-import { Movie } from '../types/Movies';
-import { Link } from 'expo-router';
+import { Image, Pressable, StyleSheet, Text, View, ActivityIndicator } from 'react-native';
+import { useRouter } from 'expo-router';
 import { getMovies } from '../utils/catalog';
+import { Movie } from '../types/Movies';
 
 export default function HomeScreen() {
     const [movies, setMovies] = useState<Movie[] | null>(null);
     const [focusedId, setFocusedId] = useState<string | null>(null);
     const [error, setError] = useState<string | null>(null);
+    const router = useRouter();
 
     // Load data
     useEffect(() => {
@@ -40,27 +32,26 @@ export default function HomeScreen() {
     }
 
     // TODO: clean file type from titles
+    // TODO: fix D-pad focus
     return (
         <View style={styles.container}>
-            <FlatList
-                data={movies!}
-                numColumns={3}
-                keyExtractor={item => item.id}
-                contentContainerStyle={styles.listContent}
-                renderItem={({ item }) => (
-                    <Link
-                        style={styles.card}
-                        href={{ pathname: '/details', params: { id: item.id } }}
-                        asChild
-                    >
+            <View style={styles.grid}>
+                {movies!.slice(0, 6).map((item) => {
+                    const isFocused = focusedId === item.id;
+                    return (
                         <Pressable
+                            key={item.id}
                             onFocus={() => setFocusedId(item.id)}
                             onBlur={() => setFocusedId(null)}
-                            style={({ pressed }) => [
-                                pressed && styles.pressed,
-                                focusedId === item.id && styles.focused,
+                            onPress={() =>
+                                router.push({ pathname: '/details', params: { id: item.id } })
+                            }
+                            focusable={true}
+                            style={[
+                                styles.card,
+                                isFocused && styles.focused,
+                                { transform: [{ scale: isFocused ? 1.05 : 1 }] },
                             ]}
-                            focusable
                             accessibilityRole='button'
                         >
                             <Image source={{ uri: item.thumbnail }} style={styles.poster} />
@@ -68,47 +59,41 @@ export default function HomeScreen() {
                                 {item.title}
                             </Text>
                         </Pressable>
-                    </Link>
-                )}
-            />
+                    );
+                })}
+            </View>
         </View>
     );
 }
-
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        backgroundColor: '#000000',
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#000000',
     },
-    listContent: {
+    grid: {
         width: '100%',
-        height: 300,
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        justifyContent: 'center',
         paddingTop: 20,
-        justifyContent: 'space-evenly',
-        alignItems: 'center',
     },
     card: {
         width: '30%',
-        height: 'auto',
-        marginHorizontal: 16,
+        margin: 12,
         alignItems: 'center',
     },
     poster: {
         width: '100%',
-        height: '80%',
+        height: 200,
         borderRadius: 6,
     },
     title: {
         marginTop: 6,
-        marginBottom: 8,
-        fontSize: 22,
-        textAlign: 'center',
+        fontSize: 18,
         color: '#eaedee',
-    },
-    pressed: {
-        opacity: 0.8,
+        textAlign: 'center',
     },
     focused: {
         borderWidth: 2,
