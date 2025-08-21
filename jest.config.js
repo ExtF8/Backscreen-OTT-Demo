@@ -1,5 +1,6 @@
 module.exports = {
     preset: 'jest-expo',
+    setupFiles: ['./jest.setup.ts'],
     transform: {
         '^.+\\.[jt]sx?$': 'babel-jest',
     },
