@@ -1,50 +1,69 @@
-# Welcome to your Expo app 👋
+# Backscreen OTT Demo
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A simple OTT-style video browsing and playback application built with **Expo Router**, designed to run on **Android TV emulator**. Users can browse a catalog of movies, view details, and play videos using an intuitive interface.
 
-## Get started
+## Setup & Run on Android TV Emulator
 
 1. Install dependencies
 
-   ```bash
-   npm install
-   ```
+    ```bash
+    npm install
+    ```
 
 2. Start the app
 
-   ```bash
-   npx expo start
-   ```
+    ```bash
+    npx expo start
+    ```
 
-In the output, you'll find options to open the app in a
+3. Create and start an Android TV Emulator
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+    1. Open Android Studio → Device Manager
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+    2. Create a new virtual device:
 
-## Get a fresh project
+    3. Choose TV → Android TV (1080p)
 
-When you're ready, run:
+    4. Select a system image (API 36 recommended, with Google APIs)
+
+    5. Start the emulator.
+
+## Libraries Used
+
+expo-router
+Provides file-based routing, simplifying navigation between screens.
+
+expo-video
+For native video playback. Used to stream .mp4 and .m3u8 videos.
+
+@testing-library/react-native
+Used to test components as users would interact with them.
+
+jest-expo
+Jest configuration for Expo apps, allowing smooth test setup.
+
+## Running Tests
+
+Run all tests
 
 ```bash
-npm run reset-project
+npm test
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+Run a single test file
 
-## Learn more
+```bash
+npm test __tests__/HomeScreen.test.tsx
+```
 
-To learn more about developing your project with Expo, look at the following resources:
+## Known Limitations and TODOs
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+- D-pad focus handling in grid layout is incomplete
 
-## Join the community
+- Focus indicators need better styling for TV navigation
 
-Join our community of developers creating universal apps.
+- Basic error handling in video playback
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+- No transitions or animations between screens
+
+- No persistent state (e.g., watch history or favorites)
