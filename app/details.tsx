@@ -1,3 +1,4 @@
+import React from 'react';
 import { StyleSheet, View, Text, Pressable, ImageBackground } from 'react-native';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { Movie } from '../types/Movies';
@@ -58,7 +59,7 @@ const styles = StyleSheet.create({
     titleContainer: {
         alignItems: 'center',
         paddingBottom: 10,
-        backgroundColor: '#00000099'
+        backgroundColor: '#00000099',
     },
     title: {
         fontSize: 30,
