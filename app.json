@@ -1,45 +1,47 @@
 {
-    "expo": {
-        "name": "Backscreen-OTT-Demo",
-        "slug": "Backscreen-OTT-Demo",
-        "version": "1.0.0",
-        "orientation": "landscape",
-        "icon": "./assets/images/icon.png",
-        "scheme": "backscreenottdemo",
-        "userInterfaceStyle": "automatic",
-        "newArchEnabled": true,
-        "ios": {
-            "supportsTablet": true
-        },
-        "android": {
-            "adaptiveIcon": {
-                "foregroundImage": "./assets/images/adaptive-icon.png",
-                "backgroundColor": "#000000"
-            },
-            "edgeToEdgeEnabled": true
-        },
-        "web": {
-            "bundler": "metro",
-            "output": "static",
-            "favicon": "./assets/images/favicon.png",
-            "backgroundColor": "#000000"
-
-        },
-        "plugins": [
-            "expo-router",
-            [
-                "expo-splash-screen",
-                {
-                    "image": "./assets/images/splash-icon.png",
-                    "imageWidth": 200,
-                    "resizeMode": "contain",
-                    "backgroundColor": "#000000"
-                }
-            ],
-            "expo-video"
-        ],
-        "experiments": {
-            "typedRoutes": true
+  "expo": {
+    "name": "Backscreen-OTT-Demo",
+    "slug": "Backscreen-OTT-Demo",
+    "version": "1.0.0",
+    "orientation": "landscape",
+    "icon": "./assets/images/icon.png",
+    "scheme": "backscreenottdemo",
+    "userInterfaceStyle": "automatic",
+    "newArchEnabled": true,
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.anonymous.BackscreenOTTDemo"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/images/adaptive-icon.png",
+        "backgroundColor": "#000000"
+      },
+      "edgeToEdgeEnabled": true,
+      "package": "com.anonymous.BackscreenOTTDemo"
+    },
+    "web": {
+      "bundler": "metro",
+      "output": "static",
+      "favicon": "./assets/images/favicon.png",
+      "backgroundColor": "#000000"
+    },
+    "plugins": [
+      "expo-router",
+      [
+        "expo-splash-screen",
+        {
+          "image": "./assets/images/splash-icon.png",
+          "imageWidth": 200,
+          "resizeMode": "contain",
+          "backgroundColor": "#000000"
         }
+      ],
+      "expo-video",
+      "@react-native-tvos/config-tv"
+    ],
+    "experiments": {
+      "typedRoutes": true
     }
+  }
 }
