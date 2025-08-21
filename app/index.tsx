@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
     Image,
     FlatList,
@@ -22,7 +22,8 @@ export default function HomeScreen() {
     useEffect(() => {
         try {
             // simulate async loading
-            setTimeout(() => setMovies(getMovies()), 150);
+            // setTimeout(() => setMovies(getMovies()), 150);
+            setMovies(getMovies());
         } catch (err) {
             console.error(err);
             setError('Failed to load catalog');
@@ -31,7 +32,7 @@ export default function HomeScreen() {
 
     // Loading state
     if (!movies && !error) {
-        return <ActivityIndicator size={'large'} color={'#4f1fff'} style={{ flex: 1 }} />;
+        return <ActivityIndicator testID="loading-indicator" size={'large'} color={'#4f1fff'} style={{ flex: 1 }} />;
     }
 
     // Error text
